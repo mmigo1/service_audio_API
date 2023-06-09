@@ -36,7 +36,7 @@ class AddAudio(APIView):
             uuid: str = serializer.data['id']
             audio: object = Audio.objects.get(id=uuid)
             base, ext = os.path.splitext(audio.file.name)
-            if ext not in ('wav', 'mp3'):
+            if ext not in ('.wav', '.mp3'):
                 audio = Audio.objects.get(id=uuid)
                 os.remove(audio.file.path)
                 audio.delete()
@@ -62,6 +62,6 @@ def get_audio(request):
     if user and audio:
         audio: object = Audio.objects.get(id=uuid)
         filename: str = audio.file.path
-        return FileResponse(open(filename, 'rb'), status=status.HTTP_200_OK)
+        return FileResponse(open(filename, 'rb'), status=status.HTTP_200_OK, as_attachment=True)
     else:
         return HttpResponseBadRequest('Ошибка данных', status=status.HTTP_400_BAD_REQUEST)
