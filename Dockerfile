@@ -5,11 +5,10 @@ COPY service /service
 WORKDIR /service
 EXPOSE 8000
 
-RUN apk add postgresql-client build-base postgresql-dev
-
-RUN apk update
-RUN apk add
-RUN apk add ffmpeg
+RUN apk add postgresql-client build-base postgresql-dev && \
+    apk update && \
+    apk add && \
+    apk add ffmpeg
 
 RUN pip install -r /temp/requirements.txt
 
