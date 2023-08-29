@@ -30,7 +30,7 @@ docker compose run --rm web-app sh -c "python manage.py createsuperuser"
 docker-compose up
 ```
 ## Примеры запросов к POST API
-Приложение работает по на хост-машине по адресу http://localhost:8000/ и обрабатывает запросы по четырём url адресам:
+Приложение работает по адресу http://localhost:8000/ и обрабатывает запросы по четырём url адресам:
 
 1)admin/ - служит для входа в панель администратора и взаимодействия с БД
 
